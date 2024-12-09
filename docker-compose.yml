@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: task_manager
+    ports:
+      - "3307:3306" # Puerto local 3307 mapeado al 3306 del contenedor
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "4000:4000" # Puerto local 4000 mapeado al 4000 del contenedor
+    depends_on:
+      - db
+
+  frontend:
+    image: httpd:2.4
+    volumes:
+      - ./frontend:/usr/local/apache2/htdocs/
+    ports:
+      - "80:80" # El frontend se servirá en el puerto 80
+
+volumes:
+  db_data:
