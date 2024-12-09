@@ -1,5 +1,6 @@
 <h1 align="center"> Gestor de Tareas </h1>
-Características:
+<h3> Características: </h3>
+
 Backend: Servidor creado con Node.jsy Express, conectado a una base de datos MySQL.
 
 Frontend: Interfaz de usuario simple y funcional utilizando HTML, CSS y JavaScript.
